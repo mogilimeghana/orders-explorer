@@ -150,15 +150,50 @@ const filterFields: { label: string; value: FilterField }[] = [
   { label: "Priority", value: "priority" },
 ];
 
-const filterOperators: { label: string; value: FilterOperator }[] = [
+
+const textFilterOperators: { label: string; value: FilterOperator }[] = [
   { label: "Equals", value: "equals" },
   { label: "Does not equal", value: "notEquals" },
   { label: "Contains", value: "contains" },
+  { label: "Is empty", value: "isEmpty" },
+  { label: "Is not empty", value: "isNotEmpty" },
+];
+
+const numberFilterOperators: { label: string; value: FilterOperator }[] = [
+  { label: "Equals", value: "equals" },
+  { label: "Does not equal", value: "notEquals" },
   { label: "Greater than", value: "greaterThan" },
   { label: "Less than", value: "lessThan" },
   { label: "Is empty", value: "isEmpty" },
   { label: "Is not empty", value: "isNotEmpty" },
 ];
+
+const dateFilterOperators: { label: string; value: FilterOperator }[] = [
+  { label: "Equals", value: "equals" },
+  { label: "Does not equal", value: "notEquals" },
+  { label: "After", value: "greaterThan" },
+  { label: "Before", value: "lessThan" },
+  { label: "Is empty", value: "isEmpty" },
+  { label: "Is not empty", value: "isNotEmpty" },
+];
+
+function getOperatorsForField(field: FilterField) {
+  if (field === "amount") return numberFilterOperators;
+  if (field === "createdAt") return dateFilterOperators;
+
+  if (
+    field === "status" ||
+    field === "region" ||
+    field === "priority"
+  ) {
+    return textFilterOperators.filter(
+      (operator) => operator.value !== "contains",
+    );
+  }
+
+  return textFilterOperators;
+}
+
 
 function addFilterGroup() {
   const newCondition: FilterCondition = {
@@ -693,11 +728,18 @@ function exportSelectedOrders() {
                 <select
                   aria-label="Filter field"
                   value={condition.field}
-                  onChange={(event) =>
-                    updateFilterCondition(group.id, condition.id, {
-                      field: event.target.value as FilterField,
-                    })
-                  }
+                 
+onChange={(event) => {
+  const newField = event.target.value as FilterField;
+  const operators = getOperatorsForField(newField);
+
+  updateFilterCondition(group.id, condition.id, {
+    field: newField,
+    operator: operators[0].value,
+    value: "",
+  });
+}}
+
                 >
                   {filterFields.map((field) => (
                     <option key={field.value} value={field.value}>
@@ -715,7 +757,7 @@ function exportSelectedOrders() {
                     })
                   }
                 >
-                  {filterOperators.map((operator) => (
+                  {getOperatorsForField(condition.field).map((operator) => (
                     <option key={operator.value} value={operator.value}>
                       {operator.label}
                     </option>
@@ -798,10 +840,20 @@ function exportSelectedOrders() {
                   filterFields.find((field) => field.value === condition.field)
                     ?.label ?? condition.field;
 
-                const operatorLabel =
-                  filterOperators.find(
-                    (operator) => operator.value === condition.operator,
-                  )?.label ?? condition.operator;
+                [
+  ...textFilterOperators,
+  ...numberFilterOperators,
+  ...dateFilterOperators,
+].find(
+  (operator) => operator.value === condition.operator,
+)?.label ?? condition.operator;
+const operatorLabel =
+  [
+    ...textFilterOperators,
+    ...numberFilterOperators,
+    ...dateFilterOperators,
+  ].find((operator) => operator.value === condition.operator)?.label ??
+  condition.operator;
 
                 const chipText = [
                   fieldLabel,
