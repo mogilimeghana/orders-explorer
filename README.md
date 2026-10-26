@@ -22,11 +22,28 @@ Orders Explorer is a React and TypeScript web application for exploring, filteri
 
 ## Tech Stack
 
-- React
-- TypeScript
-- Vite
-- CSS
-- Native browser APIs
+- React 19 — Builds the user interface.
+- TypeScript — Provides static type checking.
+- Vite — Runs the development server and builds the application.
+- CSS — Styles the grid, filter builder, and other interface elements.
+
+## Dependencies
+
+### Runtime Dependencies
+
+- `react` — Creates the component-based user interface.
+- `react-dom` — Renders React components in the browser.
+
+### Development Dependencies
+
+- `vite` — Provides the development server and production build tools.
+- `@vitejs/plugin-react` — Integrates React with Vite.
+- `typescript` — Checks TypeScript types and compiles the project.
+- `tsx` — Runs TypeScript scripts during development.
+- `eslint` — Checks code for potential problems.
+- `@eslint/js`, `typescript-eslint`, `eslint-plugin-react-hooks`, `eslint-plugin-react-refresh`, and `globals` — Support linting and React-specific code checks.
+- `@types/node`, `@types/react`, and `@types/react-dom` — Provide TypeScript type definitions.
+
 
 ## Requirements
 
@@ -90,6 +107,14 @@ The application processes the provided `orders.json` dataset.
 - Amounts are displayed, sorted, and filtered consistently in rupees.
 - Currency values are displayed using Indian currency formatting.
 
+## Data Loading
+
+The application loads the provided `orders.json` dataset locally in the frontend and normalizes the records before displaying them. This avoids the need for a backend or API.
+
+## Design Changes
+
+The design sketches were created before implementation to plan the main grid and empty state. The final application includes the grid, filter builder, and CSV export functionality. The screenshots in this README show the implemented interface.
+
 ## CSV Export
 
 Users can select orders and export them as a CSV file.
@@ -106,6 +131,10 @@ Design sketches are stored in the `design/` directory.
 - `design/empty-state.md`
 
 ## Application Screenshots
+
+### Empty State
+
+![Orders Explorer empty state](screenshots/empty-state.png)
 
 ### Main Orders Grid
 
