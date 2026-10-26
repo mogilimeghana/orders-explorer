@@ -749,3 +749,307 @@ input:focus-visible {
 .order-detail-notes {
   white-space: pre-wrap;
 }
+
+/* Professional visual polish — presentation only */
+
+:root {
+  color: #172b4d;
+  background: #f7f9fc;
+}
+
+body {
+  background: #f7f9fc;
+}
+
+.orders-page {
+  max-width: 1600px;
+}
+
+.order-count,
+.grid-toolbar,
+.filter-builder,
+.grid-container,
+.active-filters,
+.order-details {
+  border-color: #e2e8f0;
+  box-shadow:
+    0 1px 2px rgb(15 23 42 / 3%),
+    0 4px 12px rgb(15 23 42 / 3%);
+}
+
+.pin-button,
+.filter-builder button {
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease,
+    color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.pin-button:hover,
+.filter-builder button:hover {
+  border-color: #a9bce8;
+  background: #f4f7ff;
+}
+
+.filter-builder-header button:first-of-type {
+  box-shadow: 0 1px 2px rgb(37 82 190 / 15%);
+}
+
+.virtual-scroll .orders-table th {
+  background: #f1f5f9;
+  color: #475569;
+  border-bottom-color: #dbe3ed;
+}
+
+.virtual-scroll .orders-table td {
+  color: #334155;
+}
+
+.orders-table tbody tr {
+  transition: background-color 120ms ease;
+}
+
+.orders-table tbody tr:hover {
+  background: #f5f8ff;
+}
+
+.virtual-scroll tbody tr:hover .pinned-column {
+  background: #f5f8ff;
+}
+
+/* Keep selected rows visually distinct when hovered */
+.orders-table .selected-row,
+.orders-table .selected-row .pinned-column {
+  background: #e8efff;
+}
+
+.orders-table .selected-row:hover,
+.orders-table .selected-row:hover .pinned-column {
+  background: #dce7ff;
+}
+
+.orders-table .focused-row {
+  outline-color: #315ee7;
+}
+
+.status {
+  border-radius: 999px;
+  padding: 4px 9px;
+  font-weight: 650;
+}
+
+.filter-group {
+  border-color: #e2e8f0;
+  background: #f8fafc;
+}
+
+.filter-chip {
+  border-color: #d7e3ff;
+  background: #f1f5ff;
+}
+
+.order-details {
+  line-height: 1.55;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pin-button,
+  .filter-builder button,
+  .orders-table tbody tr {
+    transition: none;
+  }
+}
+
+/* Stronger enterprise dashboard styling */
+
+body {
+  background: #f1f5f9;
+}
+
+.orders-page {
+  width: min(100%, 1680px);
+  padding: 32px 36px;
+}
+
+.page-header {
+  margin-bottom: 26px;
+}
+
+.page-header h1 {
+  font-size: clamp(30px, 3vw, 38px);
+  letter-spacing: -1.3px;
+  color: #0f172a;
+}
+
+.eyebrow {
+  color: #315ee7;
+  font-size: 11px;
+  letter-spacing: 1.8px;
+}
+
+.subtitle {
+  color: #64748b;
+  font-size: 15px;
+}
+
+.order-count {
+  min-width: 165px;
+  padding: 19px 24px;
+  border-color: #dbe3ef;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgb(15 23 42 / 5%);
+}
+
+.grid-toolbar,
+.filter-builder {
+  border-color: #dbe3ef;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgb(15 23 42 / 4%);
+}
+
+.grid-toolbar {
+  padding: 18px 20px;
+}
+
+.filter-builder {
+  padding: 26px;
+}
+
+.filter-builder-header h2 {
+  font-size: 18px;
+  letter-spacing: -0.4px;
+}
+
+.grid-container {
+  border-color: #dbe3ef;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgb(15 23 42 / 5%);
+}
+
+.virtual-scroll .orders-table th {
+  background: #eaf0f8;
+  color: #334155;
+  border-bottom: 1px solid #d6dfeb;
+  font-size: 11px;
+  letter-spacing: 0.45px;
+}
+
+.orders-table th,
+.orders-table td {
+  padding-right: 16px;
+  padding-left: 16px;
+}
+
+.results-toolbar strong {
+  color: #0f172a;
+  font-size: 15px;
+}
+
+@media (max-width: 600px) {
+  .orders-page {
+    padding: 16px;
+  }
+
+  .filter-builder {
+    padding: 16px;
+  }
+}
+
+
+/* Professional dashboard header */
+.page-header {
+  padding: 24px 26px;
+  margin-bottom: 24px;
+  border: 1px solid #e1e8f2;
+  border-radius: 16px;
+  background: linear-gradient(120deg, #ffffff 0%, #f5f8ff 100%);
+  box-shadow: 0 4px 16px rgb(15 23 42 / 4%);
+}
+
+.page-header h1 {
+  color: #10213a;
+  font-size: clamp(30px, 3vw, 36px);
+  letter-spacing: -1.2px;
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 5px 9px;
+  border-radius: 5px;
+  background: #eaf0ff;
+  color: #3156b8;
+  font-size: 10px;
+  letter-spacing: 1.4px;
+}
+
+.subtitle {
+  margin-top: 8px;
+  color: #64748b;
+}
+
+.order-count {
+  min-width: 165px;
+  padding: 20px 24px;
+  border: 1px solid #dce5f2;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 4px 12px rgb(15 23 42 / 4%);
+}
+
+.order-count strong {
+  color: #16315c;
+  font-size: 30px;
+}
+
+
+/* Compact enterprise layout */
+.page-header {
+  padding: 20px 24px;
+  margin-bottom: 18px;
+}
+
+.page-header h1 {
+  font-size: clamp(28px, 2.5vw, 34px);
+}
+
+.order-count {
+  min-width: 145px;
+  padding: 14px 20px;
+}
+
+.order-count strong {
+  font-size: 27px;
+}
+
+.grid-toolbar {
+  padding: 14px 18px;
+  margin-bottom: 18px;
+}
+
+.filter-builder {
+  padding: 20px 24px;
+  margin-bottom: 18px;
+}
+
+.grid-container {
+  border-radius: 12px;
+}
+
+.orders-table th,
+.orders-table td {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+@media (max-width: 700px) {
+  .page-header {
+    padding: 18px;
+  }
+
+  .grid-toolbar {
+    gap: 12px;
+  }
+}
+
